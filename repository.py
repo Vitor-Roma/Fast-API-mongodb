@@ -10,7 +10,7 @@ class CollectionRepo():
 
     def list(self):
         items = []
-        for item in self.collection.find():
+        for item in self.collection.find(self._json):
             item['_id'] = str(item['_id'])
             items.append(item)
         return items

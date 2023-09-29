@@ -5,8 +5,9 @@ router = APIRouter()
 
 
 @router.get('/{collection}')
-async def all_books(collection: str):
-    return CollectionRepo(collection=collection).list()
+async def all_books(request: Request, collection: str):
+    _query = request.query_params._dict
+    return CollectionRepo(collection=collection, _json=_query).list()
 
 
 @router.post('/{collection}')
