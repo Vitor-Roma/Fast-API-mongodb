@@ -1,0 +1,25 @@
+version: "3.11"
+
+services:
+    fam_app:
+        build: .
+        container_name: fam_app
+        env_file: .env
+        ports:
+            - 80:80
+        environment:
+            - DB_URL=mongodb://fam_db/myDB
+        command: uvicorn main:app --port=80 --reload --host=0.0.0.0
+        restart: on-failure
+        volumes:
+            - ./:/usr/src/app
+        depends_on:
+            - fam_db
+    fam_db:
+        image: mongo
+        ports:
+            - 27017:27017
+        volumes:
+            - api-mongodb:/data/db
+volumes:
+    api-mongodb:
