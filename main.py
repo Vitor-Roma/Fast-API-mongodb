@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get('/')
 async def Home():
-    return 'teste'
+    return 'Home'
 
 
 app.include_router(router.router)
