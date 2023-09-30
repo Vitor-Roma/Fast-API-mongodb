@@ -7,7 +7,7 @@ load_dotenv()
 
 uri = os.getenv("URI")
 
-client = MongoClient('mongodb://fam_db/myDB')
+client = MongoClient(uri)
 
 database = client.todo_db
 

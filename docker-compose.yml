@@ -7,8 +7,6 @@ services:
         env_file: .env
         ports:
             - 80:80
-        environment:
-            - DB_URL=mongodb://fam_db/myDB
         command: uvicorn main:app --port=80 --reload --host=0.0.0.0
         restart: on-failure
         volumes:
